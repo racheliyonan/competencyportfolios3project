@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rachel Yonan | Computer Science, Arizona State University</title>
+<meta name="description" content="Portfolio of Rachel Yonan, a computer science student at Arizona State University focused on full-stack and cloud development.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=IBM+Plex+Sans:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sky:#f0ecf9; --paper:#fbf9fe; --ink:#25193f; --ink-soft:#5b5075; --line:#cfc3e8;
+    --accent:#6d3fd1; --accent-dark:#52299f;
+    --lilac:#e4d9fb; --butter:#ffe9a8; --pink:#ffd3ec; --mint:#cdf3e4; --sky-blue:#d4e5ff;
+    --head:'Bricolage Grotesque','Segoe UI',Arial,sans-serif;
+    --body:'IBM Plex Sans',-apple-system,'Segoe UI',Arial,sans-serif;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;background:var(--sky);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.65;overflow-x:hidden;}
+  a{color:var(--accent);text-underline-offset:3px;}
+  a:hover{color:var(--accent-dark);}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:4px;}
+  .wrap{max-width:860px;margin:0 auto;padding:0 24px;position:relative;}
+
+  nav{padding:20px 0;position:relative;z-index:2;}
+  nav .wrap{display:flex;gap:10px;flex-wrap:wrap;font-size:15px;}
+  nav a{color:var(--ink);text-decoration:none;padding:5px 14px;border:2px solid var(--ink);border-radius:999px;background:#fff;transition:transform .15s,background .15s;}
+  nav a:hover{background:var(--butter);transform:rotate(-3deg) translateY(-2px);color:var(--ink);}
+
+  /* hero */
+  .hero{position:relative;padding:36px 0 80px;overflow:hidden;background:radial-gradient(rgba(109,63,209,.22) 1.6px,transparent 1.7px) 0 0/24px 24px,linear-gradient(180deg,#efe6fb 0%,#fbe9f5 100%);}
+  .hero .wrap{display:grid;grid-template-columns:1fr 240px;gap:48px;align-items:center;z-index:1;}
+  .star{position:absolute;color:var(--accent);pointer-events:none;font-size:22px;}
+  .s1{top:90px;left:44%;} .s2{top:40px;right:20%;font-size:30px;color:#e0a800;} .s3{bottom:110px;right:8%;} .s4{top:230px;left:3%;color:#e0508f;}
+  h1{font-family:var(--head);font-weight:700;font-size:clamp(46px,8vw,78px);line-height:1;margin:0 0 20px;letter-spacing:-0.02em;}
+  .lede{font-size:19px;color:var(--ink-soft);max-width:520px;margin:0 0 28px;}
+  .actions{display:flex;gap:12px;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:11px 22px;border-radius:999px;font:500 15px var(--body);text-decoration:none;border:2px solid var(--ink);cursor:pointer;transition:transform .15s,box-shadow .15s;box-shadow:3px 3px 0 var(--ink);}
+  .btn:hover{transform:translate(-1px,-2px);box-shadow:5px 5px 0 var(--ink);}
+  .btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink);}
+  .btn-main{background:var(--accent);color:#fff;} .btn-main:hover{background:var(--accent-dark);color:#fff;}
+  .btn-alt{background:#fff;color:var(--ink);} .btn-alt:hover{color:var(--ink);background:var(--butter);}
+
+  .portrait{position:relative;width:240px;height:290px;padding:0;border:4px solid var(--ink);border-radius:120px 120px 16px 16px;background:var(--accent);overflow:hidden;cursor:pointer;box-shadow:8px 8px 0 var(--ink);transform:rotate(-3deg);transition:transform .2s;display:flex;align-items:center;justify-content:center;}
+  .portrait:hover{transform:rotate(2deg) scale(1.03);}
+  .portrait:active{transform:rotate(2deg) scale(.97);}
+  .portrait span{font:700 64px var(--head);color:#fff;}
+  .portrait img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 22%;}
+  .hint{margin:16px 0 0;font-size:13px;color:var(--ink-soft);text-align:center;}
+  .portrait-col{text-align:center;position:relative;}
+
+  .waves{position:absolute;left:0;right:0;bottom:-1px;height:60px;overflow:hidden;line-height:0;}
+  .waves svg{width:3600px;height:60px;fill:var(--paper);}
+  .waves .back{position:absolute;bottom:6px;fill:var(--lilac);}
+
+  main{background:var(--paper);padding:0 0 40px;}
+  section{padding:44px 0 8px;}
+  h2{font-family:var(--head);font-weight:700;font-size:30px;margin:0 0 24px;letter-spacing:-0.01em;}
+  h2::after{content:" \2726";color:var(--accent);font-size:.7em;}
+  h3{font-family:var(--head);font-weight:500;font-size:20px;margin:0;line-height:1.3;}
+
+  .entry{display:grid;grid-template-columns:170px 1fr;gap:8px 28px;padding:22px 18px;margin:0 -18px;border-top:2px dashed var(--line);border-radius:14px;transition:background .2s,transform .2s;}
+  .entry:first-of-type{border-top:none;padding-top:22px;}
+  .entry:hover{background:#fff;transform:translateX(4px);}
+  .when{color:var(--ink-soft);font-size:14.5px;padding-top:3px;}
+  .org{color:var(--ink-soft);margin:2px 0 10px;font-size:15px;}
+  .entry p{margin:0 0 10px;} .entry ul{margin:0;padding-left:20px;} .entry li{margin-bottom:6px;}
+  .stack{color:var(--ink-soft);font-size:14.5px;margin-top:8px;}
+
+  .skillgroup{margin-bottom:20px;}
+  .skillgroup h3{font-size:16px;margin-bottom:10px;color:var(--ink-soft);font-weight:500;font-family:var(--body);}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none;}
+  .chips li{padding:6px 14px;border:2px solid var(--ink);border-radius:999px;font-size:14.5px;background:var(--lilac);transform:rotate(var(--r,0deg));transition:transform .2s cubic-bezier(.3,1.6,.5,1),box-shadow .2s;cursor:default;}
+  .chips li:nth-child(4n+1){--r:-2deg;} .chips li:nth-child(4n+2){--r:1.5deg;background:var(--butter);}
+  .chips li:nth-child(4n+3){--r:-1deg;background:var(--pink);} .chips li:nth-child(4n){--r:2deg;background:var(--mint);}
+  .chips li:hover{transform:rotate(0) translateY(-4px) scale(1.1);box-shadow:3px 3px 0 var(--ink);}
+
+  /* bucket */
+  .play p{max-width:520px;}
+  .stage{display:flex;gap:40px;align-items:flex-end;flex-wrap:wrap;margin-top:28px;}
+  .bucket{position:relative;width:250px;height:190px;border:4px solid var(--ink);border-radius:8px 8px 34px 34px;background:#fff;box-shadow:7px 7px 0 var(--accent);display:flex;flex-wrap:wrap-reverse;align-content:flex-start;justify-content:center;gap:6px;padding:10px;}
+  .bucket::before{content:"";position:absolute;left:-10px;right:-10px;top:-12px;height:14px;border:4px solid var(--ink);border-radius:999px;background:var(--lilac);}
+  .file{display:inline-block;padding:3px 10px;border:2px solid var(--ink);border-radius:8px;font:500 13px var(--body);animation:drop .5s cubic-bezier(.3,1.5,.5,1);}
+  @keyframes drop{from{transform:translateY(-170px) rotate(-18deg);opacity:0;}60%{opacity:1;}to{transform:none;opacity:1;}}
+  .controls{display:flex;flex-direction:column;gap:12px;align-items:flex-start;}
+  .count{font:700 22px var(--head);margin:0;}
+  .fact{margin:0;font-size:14.5px;color:var(--ink-soft);max-width:300px;min-height:44px;}
+
+  .contact p{max-width:520px;}
+  footer{padding:28px 0 44px;color:var(--ink-soft);font-size:14px;border-top:2px dashed var(--line);}
+
+
+  /* extra whimsy */
+  .swap{display:inline-block;color:var(--accent);font-weight:500;border-bottom:3px dotted var(--accent);}
+  .sticker{position:absolute;z-index:3;width:62px;height:62px;display:flex;align-items:center;justify-content:center;font-size:32px;line-height:1;background:#fff;border:3px solid var(--ink);border-radius:50%;box-shadow:3px 3px 0 var(--ink);transform:rotate(var(--r,0deg));cursor:grab;touch-action:none;user-select:none;}
+  .sticker.drag{cursor:grabbing;box-shadow:6px 6px 0 var(--ink);animation:none;transform:scale(1.15) rotate(var(--r,0deg));}
+  .st1{bottom:110px;left:2%;--r:-8deg;} .st2{top:70px;left:36%;--r:6deg;} .st3{top:215px;right:30%;--r:-5deg;}
+  .st4{bottom:90px;right:5%;--r:9deg;} .st5{top:40px;right:3%;--r:-6deg;}
+  .float{position:absolute;z-index:4;font-size:30px;pointer-events:none;}
+  .f1{top:-16px;right:4px;} .f2{bottom:36px;left:-14px;}
+  .tape{margin:18px 0 0 -20px;width:calc(100% + 40px);transform:rotate(-1.4deg);background:var(--butter);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);overflow:hidden;white-space:nowrap;font:700 18px var(--head);padding:8px 0;}
+  .tape-track{display:inline-block;}
+  .tape-track span{padding-right:0;}
+  h2{transform-origin:left center;}
+  h2:hover{animation:wiggle .5s ease-in-out;}
+  @keyframes wiggle{0%,100%{transform:rotate(0);}25%{transform:rotate(-2.5deg);}75%{transform:rotate(2.5deg);}}
+  .js .reveal{opacity:0;}
+  .js .reveal.in{opacity:1;animation:pop .65s cubic-bezier(.3,1.45,.5,1);}
+  @keyframes pop{from{opacity:0;transform:translateY(28px) scale(.95);}to{opacity:1;transform:none;}}
+  .swap.pop{animation:swap .45s cubic-bezier(.3,1.6,.5,1);}
+  @keyframes swap{from{opacity:0;transform:translateY(12px) rotate(-3deg);}to{opacity:1;transform:none;}}
+
+  .bucky{position:fixed;right:16px;bottom:16px;z-index:40;display:flex;flex-direction:column;align-items:flex-end;gap:8px;}
+  .bubble{margin:0;max-width:210px;background:#fff;border:3px solid var(--ink);border-radius:16px;padding:8px 12px;font-size:14px;line-height:1.35;box-shadow:3px 3px 0 var(--ink);opacity:0;transform:translateY(6px) scale(.9);transition:opacity .2s,transform .2s;pointer-events:none;}
+  .bubble.show{opacity:1;transform:none;}
+  .bucky-btn{position:relative;width:76px;height:80px;border:0;background:none;padding:0;cursor:pointer;transition:transform .2s cubic-bezier(.3,1.6,.5,1);}
+  .bucky-btn:hover{transform:translateY(-4px) rotate(-4deg);}
+  .bucky-btn:active{transform:scale(.92);}
+  .rim{position:absolute;left:-4px;right:-4px;top:6px;height:14px;border:3px solid var(--ink);border-radius:999px;background:var(--lilac);z-index:2;}
+  .body{position:absolute;left:4px;right:4px;top:14px;bottom:0;border:3px solid var(--ink);border-radius:6px 6px 26px 26px;background:var(--accent);display:block;}
+  .eye{position:absolute;top:18px;width:20px;height:20px;border-radius:50%;background:#fff;border:2px solid var(--ink);overflow:hidden;}
+  .eye:nth-child(1){left:7px;} .eye:nth-child(2){right:7px;}
+  .eye i{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--ink);left:4px;top:4px;}
+  .mouth{position:absolute;left:50%;bottom:10px;width:20px;height:10px;border:3px solid var(--ink);border-top:0;border-radius:0 0 20px 20px;transform:translateX(-50%);}
+
+  .spark{position:fixed;left:0;top:0;pointer-events:none;z-index:60;user-select:none;}
+
+  @media (prefers-reduced-motion:no-preference){
+    .sticker{animation:wob 3.2s ease-in-out infinite alternate;} .st2{animation-duration:4s;} .st3{animation-duration:3.6s;} .st4{animation-duration:4.4s;} .st5{animation-duration:3s;}
+    @keyframes wob{from{transform:rotate(calc(var(--r) - 5deg)) translateY(0);}to{transform:rotate(calc(var(--r) + 5deg)) translateY(-9px);}}
+    .float{animation:floaty 2.8s ease-in-out infinite alternate;} .f2{animation-delay:1s;}
+    @keyframes floaty{from{transform:translateY(0) rotate(-8deg);}to{transform:translateY(-12px) rotate(10deg);}}
+    .tape-track{animation:tape 26s linear infinite;}
+    @keyframes tape{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+    .eye{animation:blink 5s infinite;} .eye:nth-child(2){animation-delay:.05s;}
+    @keyframes blink{0%,92%,100%{transform:scaleY(1);}96%{transform:scaleY(.1);}}
+    .btn:hover{animation:wobble .4s;}
+    @keyframes wobble{0%,100%{rotate:0deg;}30%{rotate:-2deg;}70%{rotate:2deg;}}
+  }
+  @media (max-width:720px){
+    .st2,.st3{display:none;}
+    .bucky{right:10px;bottom:10px;}
+  }
+  @media (prefers-reduced-motion:no-preference){
+    .star{animation:twinkle 2.6s ease-in-out infinite;} .s2{animation-delay:.8s;} .s3{animation-delay:1.5s;} .s4{animation-delay:2s;}
+    @keyframes twinkle{0%,100%{opacity:.25;transform:scale(.8) rotate(0);}50%{opacity:1;transform:scale(1.25) rotate(25deg);}}
+    .waves .front{animation:slide 14s linear infinite;} .waves .back{animation:slide 22s linear infinite reverse;}
+    @keyframes slide{from{transform:translateX(0);}to{transform:translateX(-600px);}}
+  }
+  @media (max-width:720px){
+    .hero .wrap{grid-template-columns:1fr;gap:34px;}
+    .portrait-col{order:-1;}
+    .portrait{width:190px;height:230px;border-radius:95px 95px 14px 14px;}
+    .entry{grid-template-columns:1fr;margin:0;padding:20px 8px;}
+  }
+</style>
+<script>if(!matchMedia("(prefers-reduced-motion: reduce)").matches)document.documentElement.classList.add("js");</script>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#skills">Skills</a>
+    <a href="#play">Play</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <span class="star s1" aria-hidden="true">&#10022;</span><span class="star s2" aria-hidden="true">&#10022;</span>
+  <span class="star s3" aria-hidden="true">&#10022;</span><span class="star s4" aria-hidden="true">&#10022;</span>
+
+  <span class="sticker st1" aria-hidden="true">🪣</span><span class="sticker st2" aria-hidden="true">☕</span>
+  <span class="sticker st3" aria-hidden="true">🦋</span><span class="sticker st4" aria-hidden="true">🌸</span>
+  <span class="sticker st5" aria-hidden="true">💜</span>
+
+  <div class="wrap">
+    <div>
+      <h1>Rachel Yonan</h1>
+      <p class="lede">I'm a computer science student at Arizona State University who loves building <span class="swap" id="swap">full-stack apps</span>, from REST backends to serverless data pipelines on AWS.</p>
+      <div class="actions">
+        <a class="btn btn-main" href="Rachel_Yonan_Technical_Resume.pdf">Download resume</a>
+        <a class="btn btn-alt" href="#contact">Get in touch</a>
+      </div>
+    </div>
+    <div class="portrait-col">
+      <span class="float f1" aria-hidden="true">💜</span><span class="float f2" aria-hidden="true">✨</span>
+      <button class="portrait" id="portrait" type="button" aria-label="Photo of Rachel Yonan. Press for confetti.">
+        <span aria-hidden="true">RY</span>
+        <img src="headshot.jpg" alt="" onerror="this.style.display='none'">
+      </button>
+    </div>
+  </div>
+
+  <div class="waves" aria-hidden="true">
+    <svg class="back" viewBox="0 0 3600 60" preserveAspectRatio="none"><path d="M0 30 Q150 8 300 30 T600 30 T900 30 T1200 30 T1500 30 T1800 30 T2100 30 T2400 30 T2700 30 T3000 30 T3300 30 T3600 30 V60 H0Z"/></svg>
+    <svg class="front" viewBox="0 0 3600 60" preserveAspectRatio="none"><path d="M0 38 Q150 14 300 38 T600 38 T900 38 T1200 38 T1500 38 T1800 38 T2100 38 T2400 38 T2700 38 T3000 38 T3300 38 T3600 38 V60 H0Z"/></svg>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section id="experience">
+      <h2 class="reveal">Experience</h2>
+
+      <div class="entry reveal">
+        <div class="when">June 2026 to August 2026</div>
+        <div>
+          <h3>Software Engineer Intern</h3>
+          <p class="org">Savvas Learning Company</p>
+          <ul>
+            <li>Designed and built a full-stack feedback dashboard for the SuccessMaker product team, with a Node.js/Express backend-for-frontend (13+ REST endpoints) and an Angular frontend.</li>
+            <li>Stored form submissions and attachments in AWS S3 using presigned URLs.</li>
+            <li>Added an AI summarization feature with AWS Bedrock that surfaces patterns across recent feedback.</li>
+            <li>Implemented Auth0 SSO and rate limiting, and reviewed the system's authentication and data handling.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry reveal">
+        <div class="when">May 2025</div>
+        <div>
+          <h3>Software Developer Intern</h3>
+          <p class="org">Respondology</p>
+          <ul>
+            <li>Built a sports-specific knowledge base for a retrieval-augmented generation (RAG) moderation system used by major league clients.</li>
+            <li>Improved content detection accuracy by 16% on 1,000+ social media comments.</li>
+            <li>Developed containerized data pipelines with Python, Docker, and AWS ECS.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="entry reveal">
+        <div class="when">January 2025 to present</div>
+        <div>
+          <h3>Undergraduate Teaching Assistant</h3>
+          <p class="org">Arizona State University</p>
+          <p>Support 300+ students in Object-Oriented Programming and Data Structures (CSE205) and Digital Circuit Design Fundamentals (EEE120).</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2 class="reveal">Projects</h2>
+
+      <div class="entry reveal">
+        <div class="when">2026 to Present</div>
+        <div>
+          <h3>Vision-Guided AI Agent for Autonomous GUI Testing</h3>
+          <p class="org">Senior capstone, team of five</p>
+          <p>A testing rig that looks at a screen, finds the buttons and fields with computer vision, and carries out test steps through a microcontroller that acts as a keyboard and mouse. I currently own the backend and API layer that will start test runs and report results, including the connection to CI/CD pipelines.</p>
+          <p class="stack">Edge AI on NVIDIA Jetson, computer vision, LLM agent logic, REST API</p>
+        </div>
+      </div>
+
+      <div class="entry reveal">
+        <div class="when">September to December 2025</div>
+        <div>
+          <h3>NUETech.AI</h3>
+          <p class="org">Engineering Projects in Community Service (EPICS), with NL Eats</p>
+          <p>A full-stack agritech platform for Canadian farmers that combines weather data, fertilizer recommendations, and satellite-based vegetation analysis. Serverless AWS Lambda and DynamoDB workflows compute vegetation indices and field-level statistics, and 20+ agronomic variables and fertilizer reference datasets are stored in S3.</p>
+          <p class="stack">React, AWS Lambda, DynamoDB, S3</p>
+        </div>
+      </div>
+
+      <div class="entry reveal">
+        <div class="when">October 2024</div>
+        <div>
+          <h3>Full-Stack Audio Analysis Tool</h3>
+          <p class="org">Personal project</p>
+          <p>A web app that analyzes uploaded audio files and reports tempo, duration, amplitude range, and musical key, converts frequency data into note names, and draws a spectrogram. The Flask API processes audio with Librosa, and the React frontend shows results as they arrive.</p>
+          <p class="stack">Python, Flask, React, Axios, Librosa</p>
+        </div>
+      </div>
+
+      <div class="entry reveal">
+        <div class="when">Fall 2026</div>
+        <div>
+          <h3>This website!</h3>
+          <p class="org">Cloud hosting practice</p>
+          <p>The page you're reading is a static site served from an Amazon S3 bucket, built while learning AWS hosting, bucket policies, and access control for a class on growing a new competency.</p>
+          <p class="stack">Amazon S3 static website hosting, HTML, CSS, JavaScript</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills">
+      <h2 class="reveal">Skills</h2>
+      <div class="skillgroup reveal">
+        <h3>Languages</h3>
+        <ul class="chips"><li>Java</li><li>Python</li><li>C</li><li>C++</li><li>JavaScript</li><li>TypeScript</li><li>Bash/Linux</li><li>SQL</li><li>HTML/CSS</li></ul>
+      </div>
+      <div class="skillgroup reveal">
+        <h3>Tools and platforms</h3>
+        <ul class="chips"><li>AWS S3</li><li>AWS Lambda</li><li>DynamoDB</li><li>AWS ECS</li><li>AWS Bedrock</li><li>Docker</li><li>Git</li><li>Jira</li><li>VS Code</li><li>Icarus Verilog</li></ul>
+      </div>
+      <div class="skillgroup reveal">
+        <h3>Coursework</h3>
+        <ul class="chips"><li>Object-Oriented Programming</li><li>Data Structures and Algorithms</li><li>Computer Organization</li><li>Operating Systems</li><li>Information Assurance</li></ul>
+      </div>
+    </section>
+
+    <section id="play" class="play">
+      <h2 class="reveal">Play with a tiny S3 bucket</h2>
+      <p>S3 stores files as objects inside buckets. Upload a few and watch them land.</p>
+      <div class="stage">
+        <div class="bucket" id="bucket" role="img" aria-label="A bucket holding uploaded files"></div>
+        <div class="controls">
+          <p class="count" id="count" aria-live="polite">0 objects in the bucket</p>
+          <button class="btn btn-main" id="upload" type="button">Upload a file</button>
+          <button class="btn btn-alt" id="empty" type="button">Empty bucket</button>
+          <p class="fact" id="fact"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="education">
+      <h2 class="reveal">Education</h2>
+      <div class="entry reveal">
+        <div class="when">August 2024 to May 2027</div>
+        <div>
+          <h3>B.S. in Computer Science</h3>
+          <p class="org">Arizona State University, Tempe, AZ</p>
+          <p>GPA 4.0, Dean's List. Recipient of the President's Scholarship, the Andy Grove Intel Scholarship, and a Grace Hopper Celebration Scholarship.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2 class="reveal">Contact</h2>
+      <p>I'm open to software engineering internships and new-grad roles. The easiest way to reach me is email.</p>
+      <p>
+        <a href="mailto:racheliyonan@gmail.com">racheliyonan@gmail.com</a><br>
+        <a href="https://github.com/racheliyonan">github.com/racheliyonan</a><br>
+        <a href="https://linkedin.com/in/racheliyonan">linkedin.com/in/racheliyonan</a>
+      </p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">Currently hosted on Amazon S3.</div>
+</footer>
+
+<div class="bucky" id="bucky">
+  <p class="bubble" id="bubble"></p>
+  <button type="button" class="bucky-btn" id="buckyBtn" aria-label="Bucky the bucket mascot. Press for a fun fact.">
+    <span class="rim"></span>
+    <span class="body"><span class="eye"><i></i></span><span class="eye"><i></i></span><span class="mouth"></span></span>
+  </button>
+</div>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function pop(x, y, glyph, dist, dur, size){
+    var el = document.createElement('span');
+    el.className = 'spark';
+    el.textContent = glyph;
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    el.style.fontSize = size + 'px';
+    document.body.appendChild(el);
+    var a = Math.random() * Math.PI * 2, d = dist * (0.5 + Math.random() * 0.7);
+    var a1 = el.animate([
+      {transform:'translate(-50%,-50%) scale(1) rotate(0deg)', opacity:1},
+      {transform:'translate(calc(-50% + ' + Math.cos(a)*d + 'px), calc(-50% + ' + (Math.sin(a)*d + 30) + 'px)) scale(.4) rotate(' + (Math.random()*360-180) + 'deg)', opacity:0}
+    ], {duration:dur, easing:'cubic-bezier(.2,.8,.3,1)'});
+    a1.onfinish = function(){ el.remove(); };
+  }
+
+  /* confetti on the portrait */
+  var glyphs = ['\u2728','\uD83D\uDC9C','\u2B50','\u2601\uFE0F','\uD83E\uDEA3','\uD83C\uDF38'];
+  document.getElementById('portrait').addEventListener('click', function(e){
+    if (reduce) return;
+    var r = this.getBoundingClientRect(), cx = r.left + r.width/2, cy = r.top + r.height/2;
+    for (var i = 0; i < 22; i++){
+      pop(cx, cy, glyphs[i % glyphs.length], 170, 900 + Math.random()*500, 18 + Math.random()*14);
+    }
+  });
+
+  /* sparkle trail (mouse only) */
+  if (!reduce && window.matchMedia('(hover: hover)').matches){
+    var last = 0, trail = ['\u2726','\u2727','\u2022'], colors = ['#6d3fd1','#e0508f','#e0a800'];
+    window.addEventListener('pointermove', function(e){
+      var now = Date.now();
+      if (now - last < 55 || e.pointerType !== 'mouse') return;
+      last = now;
+      var el = document.createElement('span');
+      el.className = 'spark';
+      el.textContent = trail[Math.floor(Math.random()*trail.length)];
+      el.style.left = e.clientX + 'px';
+      el.style.top = e.clientY + 'px';
+      el.style.color = colors[Math.floor(Math.random()*colors.length)];
+      el.style.fontSize = (12 + Math.random()*10) + 'px';
+      document.body.appendChild(el);
+      var anim = el.animate([
+        {transform:'translate(-50%,-50%) scale(1)', opacity:.9},
+        {transform:'translate(-50%,calc(-50% + 22px)) scale(.3)', opacity:0}
+      ], {duration:700, easing:'ease-out'});
+      anim.onfinish = function(){ el.remove(); };
+    });
+  }
+
+  /* tiny S3 bucket */
+  var kinds = [['.html','#ffe9a8'],['.png','#ffd3ec'],['.pdf','#cdf3e4'],['.json','#e4d9fb'],['.jpg','#d4e5ff'],['.csv','#ffe0c7'],['.py','#cdf3e4'],['.md','#ffd3ec']];
+  var bucket = document.getElementById('bucket'), count = document.getElementById('count'), fact = document.getElementById('fact');
+  var n = 0, MAX = 16;
+  var facts = [
+    'Each file is stored as an object with a unique key.',
+    'S3 copies your objects across multiple Availability Zones for durability.',
+    'A real S3 bucket never fills up. It can hold an unlimited number of objects.'
+  ];
+  function render(){
+    count.textContent = n + (n === 1 ? ' object' : ' objects') + ' in the bucket';
+    fact.textContent = n === 0 ? '' : n < 4 ? facts[0] : n < 9 ? facts[1] : facts[2];
+  }
+  document.getElementById('upload').addEventListener('click', function(){
+    var k = kinds[Math.floor(Math.random()*kinds.length)];
+    var f = document.createElement('span');
+    f.className = 'file';
+    f.textContent = 'file' + (n+1) + k[0];
+    f.style.background = k[1];
+    bucket.appendChild(f);
+    if (bucket.children.length > MAX) bucket.removeChild(bucket.firstChild);
+    n++; render();
+  });
+  document.getElementById('empty').addEventListener('click', function(){
+    bucket.innerHTML = ''; n = 0; render();
+  });
+  render();
+
+  /* rotating word */
+  var words = ['full-stack apps','serverless pipelines','REST APIs','cloud-native apps'], wi = 0, sw = document.getElementById('swap');
+  if (!reduce){
+    setInterval(function(){
+      wi = (wi + 1) % words.length; sw.textContent = words[wi];
+      sw.classList.remove('pop'); void sw.offsetWidth; sw.classList.add('pop');
+    }, 2400);
+  }
+
+  /* draggable stickers */
+  var hero = document.querySelector('.hero');
+  Array.prototype.forEach.call(document.querySelectorAll('.sticker'), function(st){
+    var ox = 0, oy = 0, dragging = false;
+    st.addEventListener('pointerdown', function(e){
+      var r = st.getBoundingClientRect(), hr = hero.getBoundingClientRect();
+      ox = e.clientX - r.left; oy = e.clientY - r.top; dragging = true;
+      st.style.left = (r.left - hr.left) + 'px'; st.style.top = (r.top - hr.top) + 'px';
+      st.style.right = 'auto'; st.style.bottom = 'auto';
+      st.setPointerCapture(e.pointerId); st.classList.add('drag'); e.preventDefault();
+    });
+    st.addEventListener('pointermove', function(e){
+      if (!dragging) return;
+      var hr = hero.getBoundingClientRect();
+      var x = Math.max(0, Math.min(hr.width - st.offsetWidth, e.clientX - hr.left - ox));
+      var y = Math.max(0, Math.min(hr.height - st.offsetHeight, e.clientY - hr.top - oy));
+      st.style.left = x + 'px'; st.style.top = y + 'px';
+    });
+    function end(){ dragging = false; st.classList.remove('drag'); }
+    st.addEventListener('pointerup', end); st.addEventListener('pointercancel', end);
+  });
+
+  /* scroll reveal */
+  var items = document.querySelectorAll('.reveal');
+  if (document.documentElement.classList.contains('js') && 'IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, {threshold: 0.12});
+    Array.prototype.forEach.call(items, function(el){ io.observe(el); });
+  } else {
+    Array.prototype.forEach.call(items, function(el){ el.classList.add('in'); });
+  }
+
+  /* Bucky the mascot */
+  var bubble = document.getElementById('bubble'), btn = document.getElementById('buckyBtn'), bt, pokes = 0, qi = 0;
+  var quips = [
+    'Like S3, Azure has Blob Storage.',
+    'Like S3, Google has Cloud Storage.',
+    'AWS and GCS both boast 99.999999999% durability.',
+    'AWS S3 alone houses more than 280 trillion objects globally.',
+    'AWS S3 processes over 100 million requests per second.',
+    'S3 buckets never fill up!',
+    'Try the upload button and play with a bucket.'
+  ];
+  function say(t){
+    bubble.textContent = t; bubble.classList.add('show');
+    clearTimeout(bt); bt = setTimeout(function(){ bubble.classList.remove('show'); }, 3800);
+  }
+  function rain(){
+    var g = ['\u2728','\uD83D\uDC9C','\uD83C\uDF38','\u2B50','\uD83E\uDEA3','\uD83E\uDD8B'];
+    for (var i = 0; i < 40; i++){
+      (function(i){
+        var el = document.createElement('span');
+        el.className = 'spark'; el.textContent = g[i % g.length];
+        el.style.left = (Math.random()*100) + 'vw'; el.style.top = '-30px';
+        el.style.fontSize = (18 + Math.random()*16) + 'px';
+        document.body.appendChild(el);
+        var an = el.animate([
+          {transform:'translateY(0) rotate(0deg)', opacity:1},
+          {transform:'translateY(' + (window.innerHeight + 60) + 'px) rotate(' + (Math.random()*540-270) + 'deg)', opacity:1}
+        ], {duration:1800 + Math.random()*1800, delay:Math.random()*600, easing:'ease-in', fill:'backwards'});
+        an.onfinish = function(){ el.remove(); };
+      })(i);
+    }
+  }
+  btn.addEventListener('click', function(){
+    pokes++;
+    if (pokes % 5 === 0){ say('Surprise! Files for everyone!'); if (!reduce) rain(); }
+    else { say(quips[qi++ % quips.length]); }
+  });
+  setTimeout(function(){ say("Click me!"); }, 1800);
+
+  if (!reduce){
+    var pupils = btn.querySelectorAll('.eye i');
+    window.addEventListener('pointermove', function(e){
+      Array.prototype.forEach.call(pupils, function(p){
+        var r = p.parentNode.getBoundingClientRect();
+        var dx = e.clientX - (r.left + r.width/2), dy = e.clientY - (r.top + r.height/2);
+        var d = Math.sqrt(dx*dx + dy*dy) || 1, m = Math.min(3, d / 30);
+        p.style.transform = 'translate(' + (dx/d*m) + 'px,' + (dy/d*m) + 'px)';
+      });
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
